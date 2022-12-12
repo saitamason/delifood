@@ -11,6 +11,11 @@
   padding: 0;
 }
 
+.meals__loader {
+  color: #333;
+  text-align: center;
+}
+
 @keyframes meals-appear {
   from {
     opacity: 0;
