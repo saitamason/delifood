@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import MealItem from "./MealItem/MealItem";
 import Card from "../UI/Card";
+import DUMMY_MEALS from "../../data/meals";
 import classes from "./AvailableMeals.module.css";
 
 const AvailableMeals = () => {
@@ -9,16 +10,17 @@ const AvailableMeals = () => {
   const [httpError, setHttpError] = useState(null);
 
   useEffect(() => {
-    const getMeals = async () => {
-      const response = await fetch(
-        "https://dawidlehai-delifood-default-rtdb.europe-west1.firebasedatabase.app/meals.json"
-      );
+    const getMeals = () => {
+      // const response = await fetch(
+      //   "https://dawidlehai-delifood-default-rtdb.europe-west1.firebasedatabase.app/meals.json"
+      // );
 
-      if (!response.ok) {
-        throw new Error("Something went wrong:", response.message);
-      }
+      // if (!response.ok) {
+      //   throw new Error("Something went wrong:", response.message);
+      // }
 
-      const responseData = await response.json();
+      // const responseData = await response.json();
+      const responseData = DUMMY_MEALS;
 
       const retrievedMeals = Object.entries(responseData).map(([key, meal]) => {
         return {
@@ -33,10 +35,12 @@ const AvailableMeals = () => {
       setIsLoading(false);
     };
 
-    getMeals().catch((error) => {
-      setIsLoading(false);
-      setHttpError(error.message);
-    });
+    getMeals();
+
+    // getMeals().catch((error) => {
+    //   setIsLoading(false);
+    //   setHttpError(error.message);
+    // });
   }, []);
 
   if (isLoading)

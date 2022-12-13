@@ -27,3 +27,8 @@ body {
   z-index: -1;
   transform: skewX(10deg) scale(1.2);
 }
+
+input:focus-visible {
+  outline: none;
+  background-color: #e9fcfa;
+}
