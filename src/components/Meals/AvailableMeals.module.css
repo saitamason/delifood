@@ -16,6 +16,11 @@
   text-align: center;
 }
 
+.meals__error {
+  color: crimson;
+  text-align: center;
+}
+
 @keyframes meals-appear {
   from {
     opacity: 0;

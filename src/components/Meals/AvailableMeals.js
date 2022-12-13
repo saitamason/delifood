@@ -6,12 +6,18 @@ import classes from "./AvailableMeals.module.css";
 const AvailableMeals = () => {
   const [meals, setMeals] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [httpError, setHttpError] = useState(null);
 
   useEffect(() => {
     const getMeals = async () => {
       const response = await fetch(
         "https://dawidlehai-delifood-default-rtdb.europe-west1.firebasedatabase.app/meals.json"
       );
+
+      if (!response.ok) {
+        throw new Error("Something went wrong:", response.message);
+      }
+
       const responseData = await response.json();
 
       const retrievedMeals = Object.entries(responseData).map(([key, meal]) => {
@@ -27,7 +33,10 @@ const AvailableMeals = () => {
       setIsLoading(false);
     };
 
-    getMeals();
+    getMeals().catch((error) => {
+      setIsLoading(false);
+      setHttpError(error.message);
+    });
   }, []);
 
   if (isLoading)
@@ -36,6 +45,14 @@ const AvailableMeals = () => {
         <p>Loading...</p>
       </section>
     );
+
+  if (httpError) {
+    return (
+      <section className={classes["meals__error"]}>
+        <p>{httpError}</p>
+      </section>
+    );
+  }
 
   const renderedMeals = meals.map((meal) => (
     <MealItem
