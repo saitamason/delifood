@@ -19,8 +19,10 @@ const Cart = (props) => {
   const cartItemRemoveHandler = (id) => cartCtx.removeItem(id);
   const cartItemAddHandler = (item) => cartCtx.addItem({ ...item, amount: 1 });
   const orderHandler = () => setIsCheckout(true);
-  const submitOrderHandler = (userData) => setDidSubmit(true);
-
+  const submitOrderHandler = (userData) => {
+    setDidSubmit(true);
+    cartCtx.clearCart();
+  };
   const cartItems = (
     <ul className={classes["cart-items"]}>
       {cartCtx.items.map((item) => (
