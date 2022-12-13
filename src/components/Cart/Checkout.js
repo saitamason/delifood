@@ -45,7 +45,12 @@ const Checkout = (props) => {
 
     if (!formIsValid) return;
 
-    // TODO: Submit cart to the backend
+    props.onConfirm({
+      name: enteredName,
+      street: enteredStreet,
+      city: enteredCity,
+      postalCode: enteredPostalCode,
+    });
   };
 
   const setControlClasses = (input) =>
@@ -79,7 +84,9 @@ const Checkout = (props) => {
         <button type="button" onClick={props.onCancel}>
           Cancel
         </button>
-        <button className={classes.submit}>Confirm</button>
+        <button type="submit" className={classes.submit}>
+          Confirm
+        </button>
       </div>
     </form>
   );
