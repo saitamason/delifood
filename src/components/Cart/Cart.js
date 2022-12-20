@@ -1,4 +1,4 @@
-import React, { useState, useContext, Fragment } from "react";
+import React, { useState, useContext } from "react";
 
 import Modal from "../UI/Modal";
 import CartItem from "./CartItem";
