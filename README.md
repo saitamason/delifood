@@ -1,4 +1,4 @@
-# <picture><source media="(prefers-color-scheme: dark)" srcset="delifood-logo-light.webp"><source media="(prefers-color-scheme: light)" srcset="delifood-logo.webp"><img alt="Delifood logo" src="delifood-logo.webp"></picture>
+# <picture><source media="(prefers-color-scheme: dark)" srcset="delifood-logo-light.webp"><source media="(prefers-color-scheme: light)" srcset="delifood-logo.webp"><img alt="Delifood logo" src="delifood-logo.webp" width="300px"></picture>
 
 **Demo food order app made with React.**
 
